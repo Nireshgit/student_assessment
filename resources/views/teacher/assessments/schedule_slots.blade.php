@@ -29,6 +29,8 @@
                         </div>
 
                         <button type="submit" class="btn btn-primary">Generate Slots</button>
+                        <a href="{{ route('assessments.getSlotsForDate', $assessment->id) }}" class="btn btn-primary">Slots</a>
+                        <a href="{{ route('assessments.scheduled') }}" class="btn btn-primary">Back to Assessments</a>
                     </form>
                 </div>
             </div>

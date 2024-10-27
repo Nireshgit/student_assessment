@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Generate Assessment Slots') }}</a>
+            {{ __('Assessment Report Slot Wise') }}</a>
         </h2>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight text-right ml-auto">
             <a href="{{ route('assessments.listSlots', $slot->assessment->id ) }}">Back</a>
@@ -22,6 +22,7 @@
                 </tr>
             </thead>
             <tbody>
+            @if(count($slot->students) > 0)
                 @foreach($slot->students as $student)
                 <tr>
                     <td class="border border-gray-300 p-2">{{ $student->name }}</td>
@@ -33,6 +34,9 @@
                     <td class="border border-gray-300 p-2">{{ $slot->name }}</td>
                 </tr>
                 @endforeach
+            @else
+                <p>No slots generated</p>
+            @endif
             </tbody>
         </table>
     </div>

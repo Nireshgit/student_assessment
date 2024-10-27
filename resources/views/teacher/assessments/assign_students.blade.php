@@ -40,6 +40,8 @@
                         <button type="button" id="saveAssignments" class="btn btn-success mt-4 hidden">Save & Publish Assignments</button>
 
                         <button type="button" id="autoAssignments" class="btn btn-success mt-4 hidden">Auto Assign & Publish</button>
+                        <a href="{{ route('assessments.getSlotsForDate', $assessment->id) }}" class="btn btn-primary">Slots</a>
+                        <a href="{{ route('assessments.scheduled') }}" class="btn btn-primary">Back to Assessments</a>
                     </form>
                 </div>
             </div>

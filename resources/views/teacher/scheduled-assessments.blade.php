@@ -15,6 +15,7 @@
                 </tr>
             </thead>
             <tbody>
+            @if($assessments)
                 @foreach($assessments as $assessment)
                 <tr>
                     <td class="border border-gray-300 p-2">{{ $assessment->classSection->standard }}@if($assessment->classSection->standard == '1')st @elseif($assessment->classSection->standard=='2')nd @else th @endif</td>
@@ -25,16 +26,22 @@
                     <td class="border border-gray-300 p-2">{{ $assessment->seats }}</td>
                     <td class="border border-gray-300 p-2">{{ $assessment->is_published ? 'Yes' : 'No' }}</td>
                     <td class="border border-gray-300 p-2">
-                            <form action="{{ route('assessments.generate_slots_form', $assessment->id) }}" method="GET">
-                                <button type="submit" class="btn btn-primary">Schedule</button>
-                            </form>
-                            <form action="{{ route('assessments.assign_students_form', $assessment->id) }}" method="GET">
-                                <button type="submit" class="btn btn-primary">Assign Students</button>
-                            </form>
+                        <form action="{{ route('assessments.generate_slots_form', $assessment->id) }}" method="GET">
+                            <button type="submit" class="btn btn-primary">Generate Slots</button>
+                        </form>
+                        <form action="{{ route('assessments.assign_students_form', $assessment->id) }}" method="GET">
+                            <button type="submit" class="btn btn-primary">Assign Students</button>
+                        </form>
+                        <form action="{{ route('assessments.getSlotsForDate', $assessment->id) }}" method="GET">
+                            <button type="submit" class="btn btn-primary">Slots</button>
+                        </form>
                             <!-- <button type="button" class="btn btn-success">Published</button> -->
                     </td>
                 </tr>
                 @endforeach
+            @else
+                <p>No assessments generated</p>
+            @endif
             </tbody>
         </table>
     </div>
