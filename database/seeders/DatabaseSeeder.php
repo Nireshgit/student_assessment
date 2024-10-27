@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
 
         Teacher::factory()->create([
             'name' => 'Teacher',
-            'email' => 'teacher@example.com',
+            'email' => 'teacher@assessment.com',
+            'subject' => 'English',
+            'password' => bcrypt('password')
         ]);
 
         //\App\Models\Teacher::factory(2)->create();
