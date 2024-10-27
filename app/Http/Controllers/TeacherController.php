@@ -28,7 +28,7 @@ class TeacherController extends Controller
 
         ClassSection::create($request->only('standard', 'section'));
 
-        return redirect()->back()->with('success', 'Class created successfully.');
+        return redirect()->route('teacher.createStudentForm')->with('success', 'Class created successfully.');
     }
 
     // Display student creation form
@@ -50,7 +50,7 @@ class TeacherController extends Controller
 
         Student::create($request->only('name', 'email', 'phone', 'class_id'));
 
-        return redirect()->back()->with('success', 'Student created successfully.');
+        return redirect()->route('teacher.createAssessmentForm')->with('success', 'Student created successfully.');
     }
 
     // Display assessment creation form
@@ -76,7 +76,7 @@ class TeacherController extends Controller
 
         Assessment::create($request->only('name', 'class_id', 'grace_time', 'duration', 'start_date', 'end_date', 'seats', 'is_published'));
 
-        return redirect()->back()->with('success', 'Assessment created successfully.');
+        return redirect()->route('assessments.scheduled')->with('success', 'Assessment created successfully.');
     }
 
     public function showScheduledAssessments()
@@ -140,7 +140,7 @@ class TeacherController extends Controller
         AssessmentSlot::insert($slots);
 
         //return redirect()->back()->with('success', 'Slots generated successfully.');
-        return redirect()->route('assessments.scheduled')->with('success', 'Slots generated successfully.');
+        return redirect()->route('assessments.listSlots',['assessment' => $assessment->id])->with('success', 'Slots generated successfully.');
     }
 
     // public function scheduleAssessment(Request $request, $id)
