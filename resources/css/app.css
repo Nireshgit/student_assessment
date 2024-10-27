@@ -1,0 +1,11 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 640px) {
+    .sm\:max-w-md {
+        max-width: 50rem !important;
+    }
+}
